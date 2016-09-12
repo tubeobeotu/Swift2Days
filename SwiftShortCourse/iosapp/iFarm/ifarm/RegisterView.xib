@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterView" customModule="ifarm" customModuleProvider="target">
+            <connections>
+                <outlet property="btn_Register" destination="YHn-PV-a6l" id="kVx-Qy-60S"/>
+                <outlet property="textPass" destination="Rrv-KS-3pU" id="0RP-us-ax5"/>
+                <outlet property="textUser" destination="g0y-HR-jtI" id="CZb-oM-tz0"/>
+                <outlet property="view" destination="aYa-gQ-oct" id="bjR-0j-nXm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="aYa-gQ-oct">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cR0-iP-DW7">
+                    <rect key="frame" x="50" y="80" width="500" height="180"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="F32-2r-a8y">
+                            <rect key="frame" x="174" y="0.0" width="151" height="90"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tạo tài khoản" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbJ-my-pgo">
+                            <rect key="frame" x="150" y="90" width="200" height="90"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="4mH-km-MoA"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QMu-XX-orS">
+                    <rect key="frame" x="50" y="260" width="500" height="60"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="g0y-HR-jtI" customClass="TextFieldLogin" customModule="ifarm" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="500" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rrv-KS-3pU" customClass="TextFieldLogin" customModule="ifarm" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="30" width="500" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                        </textField>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qIC-bd-7ya">
+                    <rect key="frame" x="267" y="543" width="66" height="28"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puf-oM-ImX">
+                            <rect key="frame" x="0.0" y="0.0" width="66" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="Đăng nhập">
+                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="back_Login:" destination="-1" eventType="touchUpInside" id="0gS-i8-htw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHn-PV-a6l" customClass="ButtonLogin" customModule="ifarm" customModuleProvider="target">
+                    <rect key="frame" x="42" y="366" width="516" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="MGq-Sn-vyF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="Tạo tài khoản mới"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="YHn-PV-a6l" secondAttribute="trailing" constant="42" id="9er-pd-YjC"/>
+                <constraint firstItem="qIC-bd-7ya" firstAttribute="centerX" secondItem="QMu-XX-orS" secondAttribute="centerX" id="9rN-ci-4hJ"/>
+                <constraint firstItem="QMu-XX-orS" firstAttribute="leading" secondItem="cR0-iP-DW7" secondAttribute="leading" id="BDb-wa-9ud"/>
+                <constraint firstItem="QMu-XX-orS" firstAttribute="top" secondItem="cR0-iP-DW7" secondAttribute="bottom" id="FvT-fB-4Lc"/>
+                <constraint firstItem="cR0-iP-DW7" firstAttribute="top" secondItem="aYa-gQ-oct" secondAttribute="top" constant="80" id="Guj-1b-5fc"/>
+                <constraint firstAttribute="bottom" secondItem="qIC-bd-7ya" secondAttribute="bottom" constant="29" id="Ile-bs-GZY"/>
+                <constraint firstItem="YHn-PV-a6l" firstAttribute="leading" secondItem="aYa-gQ-oct" secondAttribute="leading" constant="42" id="Nh9-UM-hVb"/>
+                <constraint firstItem="YHn-PV-a6l" firstAttribute="top" secondItem="QMu-XX-orS" secondAttribute="bottom" constant="46" id="T5M-rI-l2x"/>
+                <constraint firstAttribute="trailing" secondItem="cR0-iP-DW7" secondAttribute="trailing" constant="50" id="XoN-vg-xXh"/>
+                <constraint firstItem="QMu-XX-orS" firstAttribute="trailing" secondItem="cR0-iP-DW7" secondAttribute="trailing" id="djO-g3-EZN"/>
+                <constraint firstItem="cR0-iP-DW7" firstAttribute="leading" secondItem="aYa-gQ-oct" secondAttribute="leading" constant="50" id="o1O-m7-As3"/>
+            </constraints>
+            <point key="canvasLocation" x="208" y="196"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Logo" width="151" height="43"/>
+    </resources>
+</document>

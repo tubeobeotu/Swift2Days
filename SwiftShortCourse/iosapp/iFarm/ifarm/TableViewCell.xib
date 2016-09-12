@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="116" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="ifarm" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="371" height="151"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="371" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="dhl-ew-vcb">
+                        <rect key="frame" x="51" y="114" width="270" height="21"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6P-im-etg">
+                                <rect key="frame" x="0.0" y="0.0" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 pH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WS-ek-RQl">
+                                <rect key="frame" x="84" y="0.0" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHQ-5G-hug">
+                                <rect key="frame" x="152" y="0.0" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOa-Vq-tAM">
+                                <rect key="frame" x="236" y="0.0" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="humidity.png" translatesAutoresizingMaskIntoConstraints="NO" id="4VZ-hI-gLg">
+                        <rect key="frame" x="284" y="66" width="40" height="40"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="WpG-kg-Vd8">
+                        <rect key="frame" x="40" y="40" width="291" height="18"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhiệt độ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAn-Zd-fAK">
+                                <rect key="frame" x="0.0" y="0.0" width="58" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4F-kA-ic3">
+                                <rect key="frame" x="104" y="0.0" width="20" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="To0-nc-iiC">
+                                <rect key="frame" x="169" y="0.0" width="21" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Độ ẩm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9R-AZ-Ygu">
+                                <rect key="frame" x="236" y="0.0" width="55" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="e9W-RV-tJI"/>
+                        </constraints>
+                    </stackView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery.png" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-wS-9gt">
+                        <rect key="frame" x="202" y="76" width="36" height="21"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="87256" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhM-Gx-2uo">
+                        <rect key="frame" x="14" y="8" width="349" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="7kk-gA-9c8"/>
+                            <constraint firstAttribute="width" constant="349" id="tlg-ro-rjG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pH.png" translatesAutoresizingMaskIntoConstraints="NO" id="38y-Zo-1kZ">
+                        <rect key="frame" x="134" y="66" width="40" height="40"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temperature.png" translatesAutoresizingMaskIntoConstraints="NO" id="DcY-34-3oa">
+                        <rect key="frame" x="59" y="66" width="20" height="40"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xAm-wS-9gt" firstAttribute="centerX" secondItem="To0-nc-iiC" secondAttribute="centerX" id="1aO-6o-Z6m"/>
+                    <constraint firstItem="WpG-kg-Vd8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="32" id="6kS-UZ-Uh3"/>
+                    <constraint firstItem="BhM-Gx-2uo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="8iH-su-Y1J"/>
+                    <constraint firstItem="xAm-wS-9gt" firstAttribute="centerY" secondItem="DcY-34-3oa" secondAttribute="centerY" id="AN3-z6-PnA"/>
+                    <constraint firstItem="38y-Zo-1kZ" firstAttribute="centerX" secondItem="g4F-kA-ic3" secondAttribute="centerX" id="EQD-I9-Yes"/>
+                    <constraint firstItem="BhM-Gx-2uo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="GX4-Ec-zkS"/>
+                    <constraint firstItem="dhl-ew-vcb" firstAttribute="top" secondItem="DcY-34-3oa" secondAttribute="bottom" constant="8" id="MbJ-rt-fVn"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="WpG-kg-Vd8" secondAttribute="trailing" constant="32" id="RGF-7l-1Ji"/>
+                    <constraint firstItem="4VZ-hI-gLg" firstAttribute="centerY" secondItem="DcY-34-3oa" secondAttribute="centerY" id="ZE9-MQ-pgw"/>
+                    <constraint firstItem="WpG-kg-Vd8" firstAttribute="top" secondItem="BhM-Gx-2uo" secondAttribute="bottom" constant="8" id="btu-mW-nWH"/>
+                    <constraint firstItem="4VZ-hI-gLg" firstAttribute="centerX" secondItem="F9R-AZ-Ygu" secondAttribute="centerX" id="cTz-lY-CGQ"/>
+                    <constraint firstItem="Q6P-im-etg" firstAttribute="centerX" secondItem="DcY-34-3oa" secondAttribute="centerX" id="ecy-S3-kp1"/>
+                    <constraint firstItem="38y-Zo-1kZ" firstAttribute="centerY" secondItem="DcY-34-3oa" secondAttribute="centerY" id="iBH-e9-phP"/>
+                    <constraint firstItem="DcY-34-3oa" firstAttribute="centerX" secondItem="rAn-Zd-fAK" secondAttribute="centerX" id="oZj-iW-ide"/>
+                    <constraint firstItem="rHQ-5G-hug" firstAttribute="centerX" secondItem="To0-nc-iiC" secondAttribute="centerX" id="p0V-Id-4V0"/>
+                    <constraint firstItem="dhl-ew-vcb" firstAttribute="centerX" secondItem="WpG-kg-Vd8" secondAttribute="centerX" id="sIq-Vh-1Pw"/>
+                    <constraint firstItem="DcY-34-3oa" firstAttribute="top" secondItem="WpG-kg-Vd8" secondAttribute="bottom" constant="8" id="xDz-bz-ON9"/>
+                    <constraint firstItem="8WS-ek-RQl" firstAttribute="centerX" secondItem="g4F-kA-ic3" secondAttribute="centerX" id="xyG-5j-mJ0"/>
+                    <constraint firstItem="bOa-Vq-tAM" firstAttribute="centerX" secondItem="F9R-AZ-Ygu" secondAttribute="centerX" id="yOI-LQ-ugu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lbl_battery" destination="rHQ-5G-hug" id="vVO-WE-RDf"/>
+                <outlet property="lbl_humidity" destination="bOa-Vq-tAM" id="K4N-9X-kRT"/>
+                <outlet property="lbl_pH" destination="8WS-ek-RQl" id="CEX-PA-eMW"/>
+                <outlet property="lbl_sensorCode" destination="BhM-Gx-2uo" id="sH6-vi-VSP"/>
+                <outlet property="lbl_temperature" destination="Q6P-im-etg" id="X5n-nJ-kxq"/>
+            </connections>
+            <point key="canvasLocation" x="543.5" y="593.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="battery.png" width="36" height="21"/>
+        <image name="humidity.png" width="40" height="40"/>
+        <image name="pH.png" width="40" height="40"/>
+        <image name="temperature.png" width="20" height="40"/>
+    </resources>
+</document>

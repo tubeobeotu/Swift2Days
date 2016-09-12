@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
+    <entity name="Nguoi" representedClassName=".Nguoi" syncable="YES">
+        <attribute name="dob" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="salary" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="coMotViecLam" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vieclam" inverseName="nhieuNguoiLam" inverseEntity="Vieclam" syncable="YES"/>
+    </entity>
+    <entity name="Vieclam" representedClassName=".Vieclam" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="nhieuNguoiLam" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Nguoi" inverseName="coMotViecLam" inverseEntity="Nguoi" syncable="YES"/>
+    </entity>
+    <fetchRequest name="luongHon300" entity="Nguoi" predicateString="salary &gt; 300"/>
+    <elements>
+        <element name="Nguoi" positionX="-99" positionY="-387" width="128" height="118"/>
+        <element name="Vieclam" positionX="-335" positionY="-378" width="128" height="73"/>
+    </elements>
+</model>

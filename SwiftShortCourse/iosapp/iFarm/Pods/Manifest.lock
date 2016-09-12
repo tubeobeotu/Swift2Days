@@ -1,0 +1,40 @@
+PODS:
+  - Alamofire (3.4.2)
+  - AlamofireImage (2.4.1):
+    - Alamofire (~> 3.3)
+  - Charts (2.2.5):
+    - Charts/Core (= 2.2.5)
+  - Charts/Core (2.2.5)
+  - ESPullToRefresh (1.0.5)
+  - IQKeyboardManagerSwift (4.0.3)
+  - KeychainAccess (2.3.6)
+  - NVActivityIndicatorView (2.11)
+  - OEANotification (0.2.0)
+  - RATreeView (2.1.1)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.4)
+  - AlamofireImage (~> 2.0)
+  - Charts
+  - ESPullToRefresh
+  - IQKeyboardManagerSwift (= 4.0.3)
+  - KeychainAccess (~> 2.3)
+  - NVActivityIndicatorView
+  - OEANotification
+  - RATreeView
+  - SwiftyJSON (~> 2.3)
+
+SPEC CHECKSUMS:
+  Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
+  AlamofireImage: 3ccf3347d9ea24580dc11fb892770a0be6a29826
+  Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
+  ESPullToRefresh: 03154f0eff5e4519970f23176c338ece51a955e0
+  IQKeyboardManagerSwift: b6883b720b0e76473692fdc80828442566e1075f
+  KeychainAccess: 7f10e2ef998ddf954a64d5d608be08677774684d
+  NVActivityIndicatorView: 6a2bca6dab5c88ad72c28f50676acc6cca450c0d
+  OEANotification: 7a7cbf6cf365ec11a4bd9b078eb1daa0c1de69c8
+  RATreeView: f40c8fdc7c99eb0aecced77ad20b0c52f4e9a9c4
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartViewController" customModule="ifarm" customModuleProvider="target">
+            <connections>
+                <outlet property="BarChart" destination="hXw-WU-q4N" id="RN7-6f-654"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXw-WU-q4N" customClass="BarChartView" customModule="Charts">
+                    <rect key="frame" x="0.0" y="223" width="600" height="154"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="154" id="ZFb-bh-8ME"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="hXw-WU-q4N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NdR-Ca-Q85"/>
+                <constraint firstAttribute="trailing" secondItem="hXw-WU-q4N" secondAttribute="trailing" id="PAU-K9-WGl"/>
+                <constraint firstItem="hXw-WU-q4N" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="c8R-Gr-ufg"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

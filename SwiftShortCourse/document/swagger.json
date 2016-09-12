@@ -1,0 +1,3090 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.2",
+        "title": "iFarm",
+        "description": "Restful API List used for communication between Gateway/Mobile and Server",
+        "contact": {
+            "name": "Techmaster team",
+            "email": "cuong@techmaster.vn",
+            "url": "https://techmaster.vn"
+        }
+    },
+    "basePath": "/api",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/sensors": {
+            "get": {
+                "description": "Fetch `Sensor` data",
+                "operationId": "findAllSensors",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page index\n\nDefault value: 1\n",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Sensor` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?owner=2&temperature_gt=3`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfSensor",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "farm": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "enum": [
+                                            "Disable",
+                                            "Alarm",
+                                            "Offline",
+                                            "Online"
+                                        ]
+                                    },
+                                    "createdAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "createdBy": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "modifiedAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "sensor_data": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/definitions/SensorData"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sensors/page/{page}": {
+            "get": {
+                "description": "Fetch `Sensor` data",
+                "operationId": "findAllSensorsWithPage",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "Page Index",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Sensor` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?owner=2&temperature_gt=3`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfSensor",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "farm": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "enum": [
+                                            "Disable",
+                                            "Alarm",
+                                            "Offline",
+                                            "Online"
+                                        ]
+                                    },
+                                    "createdAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "createdBy": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "modifiedAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "sensor_data": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/definitions/SensorData"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sensors/{property}/{order}": {
+            "get": {
+                "description": "Fetch sorted `Sensor` data.",
+                "operationId": "findAllSortedSensors",
+                "parameters": [
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "Property need to sort by",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "Order type (`ASC`/`DESC`)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Sensor` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?owner=2&temperature_gt=3`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfSensor",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "farm": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "enum": [
+                                            "Disable",
+                                            "Alarm",
+                                            "Offline",
+                                            "Online"
+                                        ]
+                                    },
+                                    "createdAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "createdBy": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "modifiedAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "sensor_data": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/definitions/SensorData"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sensors/page/{page}/{property}/{order}": {
+            "get": {
+                "description": "Fetch sorted `Sensor` data.",
+                "operationId": "findAllSortedSensorsWithPage",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "Page Index",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "Property need to sort by",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "Order type (`ASC`/`DESC`)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Sensor` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?owner=2&temperature_gt=3`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfSensor",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "farm": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "enum": [
+                                            "Disable",
+                                            "Alarm",
+                                            "Offline",
+                                            "Online"
+                                        ]
+                                    },
+                                    "createdAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "createdBy": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "modifiedAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "sensor_data": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/definitions/SensorData"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sensor/{id}": {
+            "get": {
+                "description": "Get `Sensor` data by id",
+                "operationId": "findSensorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Sensor` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Sensor` response\n",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "farm": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "longitude": {
+                                    "type": "number",
+                                    "format": "float"
+                                },
+                                "latitude": {
+                                    "type": "number",
+                                    "format": "float"
+                                },
+                                "status": {
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "enum": [
+                                        "Disable",
+                                        "Alarm",
+                                        "Offline",
+                                        "Online"
+                                    ]
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "createdBy": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                },
+                                "modifiedAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "sensor_data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SensorData"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "`Sensor` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Update `Sensor` data by id",
+                "operationId": "updateSensorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Sensor` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Data will update\n",
+                        "required": true,
+                        "schema": {
+                            "title": "Data",
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Sensor` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/Sensor"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`Sensor` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete `Sensor` by id",
+                "operationId": "deleteSensorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Sensor` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "`Sensor` deleted\n",
+                        "schema": {
+                            "$ref": "#/definitions/Sensor"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Sensor not found"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/farms": {
+            "get": {
+                "description": "Fetch `Farm` data.",
+                "operationId": "findAllFarms",
+                "parameters": [
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Farm` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?owner=2&title_ilike=xyz`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfFarm",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "owner": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "sensorCount": {
+                                        "type": "integer",
+                                        "format": "int32"
+                                    },
+                                    "lastModified": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/farms/page/{page}": {
+            "get": {
+                "description": "Fetch `Farm` data.",
+                "operationId": "findAllFarmsWithPage",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "Page Index",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Farm` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?owner=2&title_ilike=xyz`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfFarm",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "owner": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "sensorCount": {
+                                        "type": "integer",
+                                        "format": "int32"
+                                    },
+                                    "lastModified": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/farms/{property}/{order}": {
+            "get": {
+                "description": "Fetch sorted `Farm` data.",
+                "operationId": "findAllSortedFarms",
+                "parameters": [
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "Property need to sort by",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "Order type (`ASC`/`DESC`)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Farm` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?owner=2&title_ilike=xyz`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfFarm",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "owner": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "sensorCount": {
+                                        "type": "integer",
+                                        "format": "int32"
+                                    },
+                                    "lastModified": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/farms/page/{page}/{property}/{order}": {
+            "get": {
+                "description": "Fetch `Farm` data.",
+                "operationId": "findSortedFarmsWithPage",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "Page Index",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "Property need to sort by",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "Order type (`ASC`/`DESC`)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Farm` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?owner=2&title_ilike=xyz`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfFarm",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "owner": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "sensorCount": {
+                                        "type": "integer",
+                                        "format": "int32"
+                                    },
+                                    "lastModified": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/farm/create": {
+            "post": {
+                "description": "Create new `Farm`.",
+                "operationId": "createFarm",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "title",
+                        "description": "`Farm` Title\n",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "description",
+                        "description": "`Farm` Description\n",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "image",
+                        "description": "`Farm` Image\n",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Farm` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/Farm"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/farm/{id}": {
+            "get": {
+                "description": "Get `Farm` data by id",
+                "operationId": "findFarmById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Farm` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Farm` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/Farm"
+                        }
+                    },
+                    "404": {
+                        "description": "`Farm` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Update `Farm` data by id",
+                "operationId": "updateFarmById",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Farm` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "title",
+                        "description": "`Farm` Title\n",
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "description",
+                        "description": "`Farm` Description\n",
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "image",
+                        "description": "`Farm` Image\n",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Farm` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/Farm"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`Farm` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete `Farm` by id",
+                "operationId": "deleteFarmById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Farm` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "`Farm` deleted\n",
+                        "schema": {
+                            "$ref": "#/definitions/Farm"
+                        }
+                    },
+                    "404": {
+                        "description": "`Farm` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/farm/sensor": {
+            "post": {
+                "description": "Create `Sensor` and add it to specific `Farm`",
+                "operationId": "addSensorToFarm",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "`Sensor` Data\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Sensor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Sensor` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/Sensor"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`Farm` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "description": "Login",
+                "operationId": "login",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "username",
+                        "description": "`User` Email\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "password",
+                        "description": "`User` Password\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Auth response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "accessToken": {
+                                    "type": "string"
+                                },
+                                "expiredAt": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                },
+                                "refreshToken": {
+                                    "type": "string"
+                                },
+                                "authScheme": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Bad request (Expired/ Invalid Access Token)",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Invalid Username or Password"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/refresh-token": {
+            "post": {
+                "description": "Use for Prolong Access Token",
+                "operationId": "refreshToken",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "refreshToken",
+                        "description": "Refresh Token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Auth response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "accessToken": {
+                                    "type": "string"
+                                },
+                                "expiredAt": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                },
+                                "refreshToken": {
+                                    "type": "string"
+                                },
+                                "authScheme": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "description": "Register",
+                "operationId": "register",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "email",
+                        "description": "Refresh Token",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "password",
+                        "description": "Refresh Token",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/request-active-user": {
+            "post": {
+                "description": "Request Active User",
+                "operationId": "requestActiveUser",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "email",
+                        "description": "Refresh Token",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "description": "Get `User` data",
+                "operationId": "getUser",
+                "responses": {
+                    "200": {
+                        "description": "`User` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "404": {
+                        "description": "`User` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Update `User` data",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "`User` Data\n",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "display_name": {
+                                    "type": "string"
+                                },
+                                "user_phone": {
+                                    "type": "string"
+                                },
+                                "role_ids": {
+                                    "type": "array",
+                                    "title": "ArrayOfRoleId",
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    }
+                                },
+                                "user_status": {
+                                    "type": "boolean"
+                                },
+                                "image": {
+                                    "type": "string",
+                                    "format": "base64"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`User` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`User` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/forgot-password": {
+            "post": {
+                "description": "Reset Password `User` by Email",
+                "operationId": "resetUserPassword",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "`User` Email\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`User` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/change-pass": {
+            "post": {
+                "description": "Update Password `User`",
+                "operationId": "updateUserPassword",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "old_pass",
+                        "in": "formData",
+                        "description": "Old Password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_pass",
+                        "in": "formData",
+                        "description": "New Password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/change-email": {
+            "post": {
+                "description": "Change `User` email",
+                "operationId": "changeUserEmail",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "New Email",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`User` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "description": "Fetch `User` data (Used for Admin)",
+                "operationId": "findAllUsers",
+                "parameters": [
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `User` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?displayName_ilike=admin`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfUser",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/page/{page}": {
+            "get": {
+                "description": "Fetch `User` data (Used for Admin)",
+                "operationId": "findAllUsersWithPage",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "Page Index",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `User` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?displayName_ilike=admin`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfUser",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{property}/{order}": {
+            "get": {
+                "description": "Fetch sorted `User` data (Used for Admin)",
+                "operationId": "findAllSortedUsers",
+                "parameters": [
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "Property need to sort by",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "Order type (`ASC`/`DESC`)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `User` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?displayName_ilike=admin`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfUser",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/page/{page}/{property}/{order}": {
+            "get": {
+                "description": "Fetch `User` data (Used for Admin)",
+                "operationId": "findAllSortedUsersWithPage",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "Page Index",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "Property need to sort by",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "Order type (`ASC`/`DESC`)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `User` data according to filter param\n\n\nIf filter type is a comparison operator, append suffix into param\nkey:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?displayName_ilike=admin`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfUser",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/create": {
+            "post": {
+                "description": "Create new `User`.",
+                "operationId": "createUser",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "`User` Data\n",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "display_name": {
+                                    "type": "string"
+                                },
+                                "user_pass": {
+                                    "type": "string",
+                                    "format": "password"
+                                },
+                                "user_email": {
+                                    "type": "string",
+                                    "format": "email"
+                                },
+                                "user_phone": {
+                                    "type": "string"
+                                },
+                                "user_status": {
+                                    "type": "boolean"
+                                },
+                                "role_ids": {
+                                    "type": "array",
+                                    "title": "ArrayOfRoleId",
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    }
+                                },
+                                "image": {
+                                    "type": "string",
+                                    "format": "base64"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`User` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "description": "Get `User` data by id (Used for Admin)",
+                "operationId": "findUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`User` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`User` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "404": {
+                        "description": "`User` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Update `User` data by id (Used for Admin)",
+                "operationId": "updateUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`User` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "`User` Data\n",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "display_name": {
+                                    "type": "string"
+                                },
+                                "user_phone": {
+                                    "type": "string"
+                                },
+                                "role_ids": {
+                                    "type": "array",
+                                    "title": "ArrayOfRoleId",
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    }
+                                },
+                                "user_status": {
+                                    "type": "boolean"
+                                },
+                                "image": {
+                                    "type": "string",
+                                    "format": "base64"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`User` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`User` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/alerts": {
+            "get": {
+                "description": "Fetch `Alert` data.",
+                "operationId": "findAllAlerts",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page index\n\nDefault value: 1\n",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Number of `Alert` per page\n\nDefault value: 10\n",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Alert` data according to filter param\n\nIf filter type is a comparison operator, append suffix into param key:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?farm=2`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfAlert",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Alert"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/alerts/{property}/{order}": {
+            "get": {
+                "description": "Fetch sorted `Alert` data.",
+                "operationId": "findAllSortedAlerts",
+                "parameters": [
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "Property need to sort by",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "Order type (`ASC`/`DESC`)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `User` data according to filter param\n\nIf filter type is a comparison operator, append suffix into param key:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n  - Search String by Pattern: `_like`\n  - Search String by Pattern (**ignore uppercase**): `_ilike`\n\nExample: `?farm=2`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfAlert",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Alert"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/alert/create": {
+            "post": {
+                "description": "Create `Alert`",
+                "operationId": "createAlert",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "`Alert` data\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Alert"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Alert` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/Alert"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/alert/{id}": {
+            "get": {
+                "description": "Get `Alert` data by id",
+                "operationId": "findAlertById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Alert` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Alert` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/Alert"
+                        }
+                    },
+                    "404": {
+                        "description": "`Alert` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Update `Alert` data by id",
+                "operationId": "updateAlertById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Alert` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Data will update\n",
+                        "required": true,
+                        "schema": {
+                            "title": "Data",
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Alert` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/Alert"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`Alert` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/alert/{id}/send-all": {
+            "post": {
+                "description": "Send `Alert` to all",
+                "operationId": "sendAlertToAll",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Alert` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succesful response"
+                    },
+                    "404": {
+                        "description": "`Alert` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/alert/{id}/send-unfinished-all": {
+            "post": {
+                "description": "Send `Alert` to unfinished mails and phones",
+                "operationId": "sendAlertToUnfinishedAll",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Alert` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succesful response"
+                    },
+                    "404": {
+                        "description": "`Alert` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/alert/{id}/send-unfinished-mail": {
+            "post": {
+                "description": "Send `Alert` to unfinished mail",
+                "operationId": "sendAlertToUnfinishedMails",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Alert` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succesful response"
+                    },
+                    "404": {
+                        "description": "`Alert` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/alert/{id}/send-unfinished-phone": {
+            "post": {
+                "description": "Send `Alert` to unfinished phone numbers",
+                "operationId": "sendAlertToUnfinishedPhones",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Alert` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succesful response"
+                    },
+                    "404": {
+                        "description": "`Alert` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sensor/range/{id}": {
+            "get": {
+                "description": "Get `SensorRange` data by `Sensor` id",
+                "operationId": "findSensorRangeBySensorId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Sensor` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`SensorRange` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/SensorRange"
+                        }
+                    },
+                    "404": {
+                        "description": "`Sensor` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Update `SensorRange` data by `Sensor` id",
+                "operationId": "updateSensorRangeBySensorId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Sensor` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Data will update\n",
+                        "required": true,
+                        "schema": {
+                            "title": "Data",
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`SensorRange` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/SensorRange"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`Sensor` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/records": {
+            "get": {
+                "description": "Fetch `SensorData`.",
+                "operationId": "findAllSensorDatas",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page index\n\nDefault value: 1\n",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Number of `SensorData` per page\n\nDefault value: 10\n",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `SensorData` data according to filter param\n\nIf filter type is a comparison operator, append suffix into param key:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n\nExample: `?created_at_gte=1472282233`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfRecord",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SensorData"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/records/{property}/{order}": {
+            "get": {
+                "description": "Fetch sorted `SensorData`.",
+                "operationId": "findAllSortedSensorDatas",
+                "parameters": [
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "Property need to sort by",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "Order type (`ASC`/`DESC`)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page index\n\nDefault value: 1\n",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Number of `SensorData` per page\n\nDefault value: 10\n",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "filter_param",
+                        "in": "query",
+                        "description": "Filter `Record` data according to filter param\n\nIf filter type is a comparison operator, append suffix into param key:\n  - Greater Than: `_gt`\n  - Greater Than or Equal: `_gte`\n  - Less Than: `_lt`\n  - Less Than or Equal: `_lte`\n\nExample: `?created_at_gte=1472282233`\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfSensorData",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SensorData"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/record/create": {
+            "post": {
+                "description": "Create new `SensorData`.",
+                "operationId": "createSensorData",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "`SensorData` data\n",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SensorData"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/farm/{id}/script": {
+            "get": {
+                "description": "Get `Script` data by `Farm` id",
+                "operationId": "getScriptByFarmId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Farm` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Script` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/AlertScript"
+                        }
+                    },
+                    "404": {
+                        "description": "`Farm` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Save `Script` data by `Farm` id",
+                "operationId": "saveScriptByFarmId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Farm` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "sensor",
+                        "in": "body",
+                        "description": "Data will update\n",
+                        "required": true,
+                        "schema": {
+                            "title": "Data",
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Script` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/AlertScript"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`Farm` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/permissions": {
+            "get": {
+                "description": "Fetch all `Permission`",
+                "operationId": "findAllPermissions",
+                "responses": {
+                    "200": {
+                        "description": "`Permission` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "404": {
+                        "description": "`User` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/roles": {
+            "get": {
+                "description": "Get All `Role`",
+                "operationId": "findAllRoles",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfUserRole",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserRole"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/create": {
+            "post": {
+                "description": "Create `Role`",
+                "operationId": "createRole",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "`Role` data\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserRole"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Role` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/UserRole"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/{id}": {
+            "get": {
+                "description": "Get `Role` data by id",
+                "operationId": "findRoleById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Role` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Role` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/UserRole"
+                        }
+                    },
+                    "404": {
+                        "description": "`Role` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Update `Role` data by id",
+                "operationId": "updateRoleById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Role` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Data will update\n",
+                        "required": true,
+                        "schema": {
+                            "title": "Data",
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "`Role` response\n",
+                        "schema": {
+                            "$ref": "#/definitions/UserRole"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`Role` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete `Role` by id",
+                "operationId": "deleteRoleById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`Role` ID\n",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "`Role` deleted\n",
+                        "schema": {
+                            "$ref": "#/definitions/UserRole"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "`Role` not found\n"
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Sensor": {
+            "type": "object",
+            "required": [
+                "id",
+                "farmId"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "farmId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "latitude": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32",
+                    "enum": [
+                        "Disable",
+                        "Alarm",
+                        "Offline",
+                        "Online"
+                    ]
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "modifiedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "SensorRange": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "sensorId": {
+                    "type": "string"
+                },
+                "temperature": {
+                    "type": "object",
+                    "properties": {
+                        "from": {
+                            "type": "number",
+                            "format": "float"
+                        },
+                        "to": {
+                            "type": "number",
+                            "format": "float"
+                        }
+                    }
+                },
+                "moisture": {
+                    "type": "object",
+                    "properties": {
+                        "from": {
+                            "type": "number",
+                            "format": "float"
+                        },
+                        "to": {
+                            "type": "number",
+                            "format": "float"
+                        }
+                    }
+                },
+                "pH": {
+                    "type": "object",
+                    "properties": {
+                        "from": {
+                            "type": "number",
+                            "format": "float"
+                        },
+                        "to": {
+                            "type": "number",
+                            "format": "float"
+                        }
+                    }
+                },
+                "battery": {
+                    "type": "object",
+                    "properties": {
+                        "from": {
+                            "type": "number",
+                            "format": "float"
+                        },
+                        "to": {
+                            "type": "number",
+                            "format": "float"
+                        }
+                    }
+                }
+            }
+        },
+        "SensorData": {
+            "type": "object",
+            "required": [
+                "id",
+                "sensorId"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "sensorId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "temperature": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "moisture": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "pH": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "battery": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "note": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Farm": {
+            "type": "object",
+            "required": [
+                "id",
+                "title",
+                "description",
+                "owner"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            }
+        },
+        "AlertScript": {
+            "type": "object",
+            "required": [
+                "id",
+                "title",
+                "farm",
+                "emails",
+                "phones",
+                "content",
+                "type"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "farm": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "email"
+                    }
+                },
+                "phones": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "content": {
+                    "type": "object",
+                    "properties": {
+                        "email": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Alert": {
+            "type": "object",
+            "required": [
+                "id",
+                "farm",
+                "sensors",
+                "content"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "farm": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "sensors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "address": {
+                                "type": "string",
+                                "format": "email"
+                            },
+                            "status": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "phones": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "number": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "content": {
+                    "type": "object",
+                    "properties": {
+                        "email": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "modifiedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "required": [
+                "id",
+                "user_pass",
+                "user_email"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "display_name": {
+                    "type": "string"
+                },
+                "user_pass": {
+                    "type": "string",
+                    "format": "password"
+                },
+                "user_email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "user_phone": {
+                    "type": "string"
+                },
+                "user_status": {
+                    "type": "boolean"
+                },
+                "role_ids": {
+                    "type": "array",
+                    "title": "ArrayOfRoleId",
+                    "items": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "user_registered": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "user_image_url": {
+                    "type": "string"
+                },
+                "salt": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserToken": {
+            "type": "object",
+            "required": [
+                "id",
+                "user_id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "user_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "jwtId": {
+                    "type": "string"
+                },
+                "reset_password_expires": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "reset_password_token": {
+                    "type": "string"
+                },
+                "change_email_expires": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "change_email_token": {
+                    "type": "string"
+                },
+                "refresh_token_expires": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserRole": {
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "title": "Permissions",
+                    "type": "object"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "required": [
+                "message"
+            ],
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

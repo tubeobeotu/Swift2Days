@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xác nhận thay đổi email tài khoản</title>
+</head>
+<body>
+<h3>Hệ thống vừa nhận được yêu cầu thay đổi email đối với tài khoản <b>{{ old_email }}</b></h3>
+<p>Chuyển sang sử dụng email <b>{{ new_email }}</b></p>
+<p>Để hoàn thiện xác nhận thay đổi email, vui lòng truy cập vào đường link:</p>
+<p>
+    <a href="{{ getConfig('domain') }}/user/email/{{ user_id }}/{{ token }}">
+        {{ getConfig('domain') }}/user/email/{{ user_id }}/{{ token }}
+    </a>
+</p>
+
+</body>
+</html>

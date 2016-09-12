@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CDD6C2A666EB6AB41A28DB88E6682E9ACB05D576",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "980CC5B0B4FA280346D442B4CC7EF9B65D40DA66" : 0,
+    "CDD6C2A666EB6AB41A28DB88E6682E9ACB05D576" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4811EAB2-4107-4881-89D3-EC257720AF3A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "980CC5B0B4FA280346D442B4CC7EF9B65D40DA66" : "..",
+    "CDD6C2A666EB6AB41A28DB88E6682E9ACB05D576" : "RockCoreStore\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RockCoreStore",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RockCoreStore.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab:root\/SwiftShortCourse.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "980CC5B0B4FA280346D442B4CC7EF9B65D40DA66"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TechMaster\/SimpleCoreStore.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CDD6C2A666EB6AB41A28DB88E6682E9ACB05D576"
+    }
+  ]
+}

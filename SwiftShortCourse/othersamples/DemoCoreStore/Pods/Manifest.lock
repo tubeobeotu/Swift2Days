@@ -1,0 +1,24 @@
+PODS:
+  - CoreStore (2.0.6):
+    - GCDKit (= 1.2.6)
+  - GCDKit (1.2.6)
+  - JASON (2.2.1)
+  - Kingfisher (2.5.1)
+  - SwiftDate (3.0.8)
+
+DEPENDENCIES:
+  - CoreStore
+  - JASON
+  - Kingfisher
+  - SwiftDate
+
+SPEC CHECKSUMS:
+  CoreStore: d600812bb49c71b232638713f6270da91b6a31c4
+  GCDKit: 739f0feaf0dd4bb59da88667b077198d809e3dfd
+  JASON: 2fdba956dfbf8663369b81a8176e6fcb225ebf10
+  Kingfisher: 9b82e0e1f1a296f149a50bbc2214532eaa4df4f1
+  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
+
+PODFILE CHECKSUM: 18460119d4974ad912e7292564b42609003f1a45
+
+COCOAPODS: 1.0.1

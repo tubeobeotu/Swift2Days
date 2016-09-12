@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoreBinaryObject" customModule="RockCoreStore" customModuleProvider="target">
+            <connections>
+                <outlet property="originalPhoto" destination="KfV-Kn-onQ" id="3p7-iC-DHP"/>
+                <outlet property="savedPhoto" destination="ukI-o6-0Yv" id="GwV-uj-xXz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="FwE-Xk-cgL">
+                    <rect key="frame" x="8" y="8" width="584" height="584"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbc-ty-jVb">
+                            <rect key="frame" x="0.0" y="0.0" width="584" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tiger.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="KfV-Kn-onQ">
+                            <rect key="frame" x="0.0" y="28" width="584" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="0Wi-w2-UMJ"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7e-WA-SG4">
+                            <rect key="frame" x="0.0" y="235" width="584" height="30"/>
+                            <color key="backgroundColor" red="0.9212072491645813" green="0.84832113981246948" blue="0.62377804517745972" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="LQ2-Bc-kyI"/>
+                            </constraints>
+                            <state key="normal" title="Save Data"/>
+                            <connections>
+                                <action selector="onSavePhoto:" destination="-1" eventType="touchUpInside" id="m5S-cz-LsC"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo retrieved from CoreData" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsm-Eu-JPH">
+                            <rect key="frame" x="0.0" y="272" width="584" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ukI-o6-0Yv">
+                            <rect key="frame" x="0.0" y="300" width="584" height="284"/>
+                        </imageView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="FwE-Xk-cgL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="2I5-cR-cdd"/>
+                <constraint firstItem="FwE-Xk-cgL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="CnN-gN-RmP"/>
+                <constraint firstAttribute="bottom" secondItem="FwE-Xk-cgL" secondAttribute="bottom" constant="8" id="IYH-5Z-jPk"/>
+                <constraint firstAttribute="trailing" secondItem="FwE-Xk-cgL" secondAttribute="trailing" constant="8" id="XRc-eZ-kRb"/>
+            </constraints>
+            <point key="canvasLocation" x="66" y="206"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tiger.jpg" width="660" height="495"/>
+    </resources>
+</document>

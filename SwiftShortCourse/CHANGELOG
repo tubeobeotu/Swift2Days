@@ -1,0 +1,23 @@
+## Version 1.0.2:
+- Tách riêng dữ liệu chi tiết của Sensor sang 1 bảng mới tên là SensorData, có ghi chép lại lịch sử thay đổi và phản hồi từ server (nếu có)
+- Bảng SensorRange sửa lại kiểu dữ liệu của các trường, thay bằng Object gồm 2 trường (from: float, to: float)
+- Tách các trường liên quan tới token của User sang 1 bảng mới tên là UserToken
+
+## Version 1.0.1:
+- Mỗi Sensor chỉ ứng với 1 Farm, và được gán vào Farm luôn ngay lúc khởi tạo, thay vì phải mất 2 thao tác
+- Chi tiết cập nhật thiết kế:
+    - Sensor:
+        - Thêm trường description và farm
+        - Loại bỏ trường owner thay bằng createdBy
+    - Farm:
+        - Loại bỏ trường sensors
+        - Bổ sung thêm trường description
+    - Alert:
+        - Bổ sung thêm trường sensors chứa danh sách Sensor
+        - Bổ sung thêm trường status để hiển thị kết quả gửi tin nhắn sms, email cho người dùng tiện theo dõi từ bên ngoài và server cũng dễ query hơn
+    - User:
+        - Bổ sung API Login và Refresh Access Token
+        - Bổ sung thêm trường refreshTokenExpires và refreshToken
+
+## Version 1.0.0:
+- Phân tích, thiết kế hệ thống, xây dựng danh sách API

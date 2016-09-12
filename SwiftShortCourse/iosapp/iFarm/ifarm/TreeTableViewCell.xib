@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="QiS-tn-bG2" customClass="TreeTableViewCell" customModule="ifarm" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QiS-tn-bG2" id="Jca-3R-K96">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYW-DJ-Lpc">
+                        <rect key="frame" x="40" y="34.5" width="272" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example text here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1u-rT-EaB">
+                        <rect key="frame" x="40" y="57.5" width="272" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="OPn-3J-fUb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wk-uX-HLV">
+                        <rect key="frame" x="8" y="40" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="1QL-yR-Si9"/>
+                            <constraint firstAttribute="width" constant="30" id="frC-c0-8Hd"/>
+                        </constraints>
+                        <state key="normal" image="plus"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tO-Es-2YS">
+                        <rect key="frame" x="271" y="38" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="Vr4-cb-nOK"/>
+                            <constraint firstAttribute="width" constant="32" id="gBT-B9-IJL"/>
+                        </constraints>
+                        <state key="normal" image="ManageFarmsBlack"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="B1u-rT-EaB" firstAttribute="leading" secondItem="KYW-DJ-Lpc" secondAttribute="leading" id="1pd-f2-PLU"/>
+                    <constraint firstItem="4wk-uX-HLV" firstAttribute="centerY" secondItem="Jca-3R-K96" secondAttribute="centerY" id="Erc-Ox-K3A"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="KYW-DJ-Lpc" secondAttribute="trailing" id="N4c-4W-Z64"/>
+                    <constraint firstItem="KYW-DJ-Lpc" firstAttribute="centerY" secondItem="Jca-3R-K96" secondAttribute="centerY" constant="-10" id="Q1a-oG-PPQ"/>
+                    <constraint firstItem="B1u-rT-EaB" firstAttribute="top" secondItem="KYW-DJ-Lpc" secondAttribute="bottom" constant="2" id="dJw-m3-W1z"/>
+                    <constraint firstAttribute="trailing" secondItem="3tO-Es-2YS" secondAttribute="trailing" constant="17" id="gJ7-L4-ktv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="B1u-rT-EaB" secondAttribute="trailing" id="oxt-7l-gjf"/>
+                    <constraint firstItem="3tO-Es-2YS" firstAttribute="centerY" secondItem="Jca-3R-K96" secondAttribute="centerY" id="qKz-O2-psb"/>
+                    <constraint firstItem="KYW-DJ-Lpc" firstAttribute="leading" secondItem="Jca-3R-K96" secondAttribute="leadingMargin" constant="32" id="qri-dV-zjy"/>
+                    <constraint firstItem="4wk-uX-HLV" firstAttribute="leading" secondItem="Jca-3R-K96" secondAttribute="leading" constant="8" id="sdc-u4-n16"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contraintCustomLabel" destination="Q1a-oG-PPQ" id="kwi-CT-Mxj"/>
+                <outlet property="contraintLeft" destination="qri-dV-zjy" id="TwB-In-i5g"/>
+                <outlet property="contraintLeftIcon" destination="sdc-u4-n16" id="WtR-We-DWo"/>
+                <outlet property="customTitleLabel" destination="KYW-DJ-Lpc" id="3w4-Cp-BUY"/>
+                <outlet property="detailsLabel" destination="B1u-rT-EaB" id="w8o-pP-rPb"/>
+                <outlet property="iconButton" destination="4wk-uX-HLV" id="aBr-Mt-u7c"/>
+                <outlet property="sensorIcon" destination="3tO-Es-2YS" id="sqK-5c-Fer"/>
+            </connections>
+            <point key="canvasLocation" x="273" y="187"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ManageFarmsBlack" width="21" height="20"/>
+        <image name="plus" width="10" height="10"/>
+    </resources>
+</document>

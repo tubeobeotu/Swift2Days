@@ -1,0 +1,29 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CE3B1F3DBE1A1004FE9C20A1698FB32F06716374" : 0,
+    "BF2E34281F4FE387B5F46A378ED11D4BDD4783C6" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "374B9034-8A1E-4FF7-B82C-59C597F1429C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CE3B1F3DBE1A1004FE9C20A1698FB32F06716374" : "..\/..",
+    "BF2E34281F4FE387B5F46A378ED11D4BDD4783C6" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PineDecor",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PineDecor.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tubeobeotu\/PineDecor.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BF2E34281F4FE387B5F46A378ED11D4BDD4783C6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tubeobeotu\/DemoSwift_NVT",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CE3B1F3DBE1A1004FE9C20A1698FB32F06716374"
+    }
+  ]
+}

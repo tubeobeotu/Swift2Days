@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xác nhận đăng ký tài khoản</title>
+</head>
+<body>
+{% if status == 'new' %}
+    <h3>Hệ thống vừa nhận được yêu cầu đăng ký tài khoản với email <b>{{ user_email }}</b></h3>
+    <p>Để hoàn thiện đăng ký và kích hoạt tài khoản, vui lòng truy cập vào đường link:</p>
+{% else %}
+    <h3>Hệ thống vừa nhận được yêu cầu kích hoạt tài khoản với email <b>{{ user_email }}</b></h3>
+    <p>Để hoàn thiện kích hoạt tài khoản, vui lòng truy cập vào đường link:</p>
+{% endif %}
+<p>
+    <a href="{{ getConfig('domain') }}/user/active/{{ user_id }}/{{ token }}">
+        {{ getConfig('domain') }}/user/active/{{ user_id }}/{{ token }}
+    </a>
+</p>
+
+</body>
+</html>

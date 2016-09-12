@@ -1,0 +1,17 @@
+PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - Synchronized (2.0.1)
+
+DEPENDENCIES:
+  - ChameleonFramework/Swift
+  - Synchronized
+
+SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Synchronized: 727f6307a92ea6e3a2fb4e5a345daad8878dd050
+
+PODFILE CHECKSUM: 8f0410b5f7883ae5e55936a66b9e51861123566d
+
+COCOAPODS: 1.0.1
