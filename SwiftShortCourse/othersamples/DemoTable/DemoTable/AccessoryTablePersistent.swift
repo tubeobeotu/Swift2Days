@@ -55,11 +55,11 @@ class AccessoryTablePersistent: UITableViewController {
         
         //2. khởi tạo custom accessoryView
         let accessoryView = CustomCheck(noncheck: UIImage(named: "circle")!, check: UIImage(named: "circlecheck")!)
-        accessoryView.checked = item["checked"] as Bool
+        accessoryView.checked = item["checked"] as! Bool
         
         
         //3. hứng tương tác đa chạm
-        accessoryView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onAccessoryTap:"))
+        accessoryView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(AccessoryTablePersistent.onAccessoryTap(_:))))
         
         //4. gán vào UITableViewCell.accessoryView
         cell.accessoryView = accessoryView

@@ -45,11 +45,11 @@ class AddUpdateStudentVC: UIViewController, UITextFieldDelegate {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[txfullName]-20-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[sliderScore]-20-|", options: [], metrics: nil, views: views))
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "save")!, target: self, action: "onSave")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "save")!, target: self, action: #selector(AddUpdateStudentVC.onSave))
     }
   
     func onSave() {
-        let studentListVC = self.navigationController?.popViewControllerAnimated(true) as! StudentListVC
+        _ = self.navigationController?.popViewControllerAnimated(true) as! StudentListVC
         
     }
 }

@@ -59,7 +59,7 @@ class CustomDrawCell: UITableViewController {
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let stock = data[indexPath.row] as! NSDictionary
         let chartView = ChartLayer()
-        chartView.initWithData(stock[VALUES] as NSArray, andFrame: cell.bounds)
+        chartView.initWithData(stock[VALUES] as! [AnyObject], andFrame: cell.bounds)
        /* let textLayer = CATextLayer()
         textLayer.string = stock[STOCK]
         textLayer.bounds = CGRect(x: 0, y: 0, width: 200, height: 30)

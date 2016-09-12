@@ -309,17 +309,18 @@ class CreateSensor: BaseViewController, MKMapViewDelegate, CLLocationManagerDele
         //-- check
         if (control == view.rightCalloutAccessoryView){
             
-            var latitude:String
-            var longitude:String
+            var latitude:Double
+            var longitude:Double
             //-- check xem da ve~ duong chua
             if(overlay != nil){
                 self.mapView.removeOverlay(overlay!)
             }
             for sensor in sensorsAround{
-                if(sensor.farmId == (view.annotation?.title)!){
-                    latitude = String(sensor.latitude)
-                    longitude = String(sensor.longitude)
-                    lookForAddress("\(latitude),\(longitude)")
+                print(view.annotation?.title)
+                if(sensor.id == (view.annotation?.title)!){
+                    latitude = Double(sensor.latitude!)
+                    longitude = Double(sensor.longitude!)
+                    lookForAddress(latitude, longitute: longitude)
                     
                 }
             }
@@ -350,23 +351,9 @@ class CreateSensor: BaseViewController, MKMapViewDelegate, CLLocationManagerDele
     
     //-- tim vi tri
     
-    func lookForAddress(addressString :String){
-        
-        self.geoCoder?.geocodeAddressString(addressString, completionHandler: { (placemarks, error) in
-            if(error == nil){
-                
-                self.foundPlace = placemarks?.first
-                let toPlace = MKPlacemark(placemark: self.foundPlace!)
-                self.routePath(MKPlacemark(coordinate: self.fromLocation!.coordinate, addressDictionary: nil),toLocation: toPlace)
-                
-            }else {
-                print(error?.localizedFailureReason)
-                return
-            }
-            
-        })
-        
-        
+    func lookForAddress(latitude: Double, longitute: Double){
+        let toPlace = CLLocation(latitude: latitude, longitude: longitute)
+        self.routePath(MKPlacemark(coordinate: self.fromLocation!.coordinate, addressDictionary: nil),toLocation: MKPlacemark(coordinate: toPlace.coordinate, addressDictionary: nil))
         
     }
     

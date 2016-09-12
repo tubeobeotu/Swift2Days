@@ -31,8 +31,8 @@ class StudentListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         let fixWidthSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
         fixWidthSpace.width = 30
-        let addButton = UIBarButtonItem(image: UIImage(named: "add")!, target: self, action: "onAdd")
-        let saveButton = UIBarButtonItem(image: UIImage(named: "save")!, target: self, action: "onSave")
+        let addButton = UIBarButtonItem(image: UIImage(named: "add")!, target: self, action: #selector(StudentListVC.onAdd))
+        let saveButton = UIBarButtonItem(image: UIImage(named: "save")!, target: self, action: Selector("onSave"))
         toolBar.items = [spacer, addButton, fixWidthSpace, saveButton, spacer]
         view.addSubview(toolBar)
         

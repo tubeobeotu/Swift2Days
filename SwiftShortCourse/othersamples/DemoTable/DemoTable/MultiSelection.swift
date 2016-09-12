@@ -16,10 +16,10 @@ class MultiSelection: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "onEdit")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MultiSelection.onEdit))
         
         
-        deleteButton = UIBarButtonItem(title: "Delete", style: UIBarButtonItemStyle.Plain, target: self, action: "onDelete")
+        deleteButton = UIBarButtonItem(title: "Delete", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MultiSelection.onDelete))
         //Lưu tam nút back bar button item
         backBarButtonItem = self.navigationItem.leftBarButtonItem
         
@@ -27,7 +27,7 @@ class MultiSelection: UITableViewController {
         self.tableView.allowsMultipleSelectionDuringEditing = true
         
         data = NSMutableArray(capacity: 20)
-        for var i = 0; i<20; i++ {
+        for _ in 0..<20 {
             data.addObject(Person())
         }
     }
@@ -64,12 +64,14 @@ class MultiSelection: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell!
+        /*var cell: UITableViewCell!
         if let dequeCell = tableView.dequeueReusableCellWithIdentifier("#") as? UITableViewCell {
             cell = dequeCell
         } else {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "#")
-        }
+        }*/
+        let cell = tableView.dequeueReusableCellWithIdentifier("#", forIndexPath: indexPath)
+        
         let person = data[indexPath.row] as! Person
         cell.textLabel?.text = person.name
         cell.detailTextLabel?.text = "\(person.age)"
