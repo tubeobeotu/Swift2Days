@@ -2,8 +2,8 @@
 //  SettingTable.swift
 //  DemoTable
 //
-//  Created by cuong minh on 11/8/14.
-//  Copyright (c) 2014 Techmaster. All rights reserved.
+//  Created by cuong minh on 11/8/16.
+//  Copyright (c) 2016 Techmaster. All rights reserved.
 //
 
 import UIKit
@@ -12,6 +12,7 @@ class SettingTable: UITableViewController {
     var data = Array<SettingEntry>()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
         data.append(SettingEntry(noncheck: UIImage(named: "wifioff")!, check: UIImage(named: "wifion")!, noncheckTitle: "Wifi is off", checkTitle: "Wifi is on"))
         data.append(SettingEntry(noncheck: UIImage(named: "localstore")!, check: UIImage(named: "cloud")!, noncheckTitle: "Store data locally", checkTitle: "Store data on cloud"))
  
@@ -28,13 +29,7 @@ class SettingTable: UITableViewController {
 
   
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell!
-        let cellID  = "#"
-        if let dequeCell = tableView.dequeueReusableCellWithIdentifier(cellID) as UITableViewCell! {
-            cell = dequeCell
-        } else  {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("id", forIndexPath: indexPath)
         let item = data[indexPath.row] as SettingEntry
         if item.checked {
             cell.textLabel?.text = item.checkTitle
@@ -48,7 +43,7 @@ class SettingTable: UITableViewController {
         
         
         //3. hứng tương tác đa chạm
-        accessoryView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onAccessoryTap:"))
+        accessoryView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onAccessoryTap(_:))))
         
         //4. gán vào UITableViewCell.accessoryView
         cell.accessoryView = accessoryView

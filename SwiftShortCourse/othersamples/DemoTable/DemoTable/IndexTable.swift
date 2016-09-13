@@ -2,8 +2,8 @@
 //  IndexTable.swift
 //  DemoTable
 //
-//  Created by cuong minh on 11/4/14.
-//  Copyright (c) 2014 Techmaster. All rights reserved.
+//  Created by cuong minh on 11/4/16.
+//  Copyright (c) 2016 Techmaster. All rights reserved.
 //
 
 import UIKit
@@ -12,12 +12,12 @@ class IndexTable: UITableViewController {
 
     var animals:[String: [String]]!
     var animalSectionTitles: [String]!
-    var animalIndexTitles: [String]!
+//    var animalIndexTitles: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initData()
-        
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
     }
     
     func initData() {
@@ -38,17 +38,12 @@ class IndexTable: UITableViewController {
 
         
         let temps = animals.keys
-        
-        /* func forwards(s1: String, s2: String) -> Bool {
-            return s1 < s2
-        }
-        animalSectionTitles = sorted(temps, forwards) */
 
         animalSectionTitles = temps.sort({ $0 < $1
             
         })
         
-        animalIndexTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+//        animalIndexTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     }
     
     func getImageFileName(animal: String) -> String {
@@ -72,19 +67,13 @@ class IndexTable: UITableViewController {
         return animalSectionTitles[section]
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]! {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return animalSectionTitles
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellID = "id"
-        var cell: UITableViewCell
-        if let dequeCell: AnyObject = tableView.dequeueReusableCellWithIdentifier(cellID) {
-            cell = dequeCell as! UITableViewCell
-        } else {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("id", forIndexPath: indexPath)
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
         let sectionTitle = animalSectionTitles[indexPath.section]
         let sectionAnimals = animals[sectionTitle]!

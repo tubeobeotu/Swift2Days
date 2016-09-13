@@ -34,66 +34,44 @@ class BootLogic: NSObject {
     
     var menu : [MenuSection]!
     class func boot(window:UIWindow){
-/*
- let basic = [SECTION: "Basic",MENU:[
- [TITLE: "Plain Table",CLASS: "PlainTable"],
- [TITLE: "Raw Table",CLASS: "RawTableViewVC"],
- [TITLE: "2 Tables in VC",CLASS: "TwoTableViewsInVC"],
- [TITLE: "Group Table",CLASS: "GroupTable"],
- [TITLE: "Table + Photo",CLASS: "VictoriaSecret"],
- [TITLE: "Index Table",CLASS: "IndexTable"],
- [TITLE: "Table StoryBoard",CLASS: "TableStoryBoard#Storyboard"]
- ]
- ] as NSDictionary
- 
- let medium = [SECTION: "Intermediate",MENU:[
- [TITLE: "Accessory Table",CLASS: "AccessoryTable"],
- [TITLE: "Accessory Table Persistent",CLASS: "AccessoryTablePersistent"],
- [TITLE: "Setting Table",CLASS: "SettingTable"],
- [TITLE: "Multi Seclection",CLASS: "MultiSelection"],
- [TITLE: "Custom Cell",CLASS: "CustomCellDemo"],
- [TITLE: "Search",CLASS: "SearchTable"],
- [TITLE: "CRUD",CLASS: "StudentListVC"]
- ]
- ] as NSDictionary
- 
- let advanced = [SECTION: "Avanced", MENU: [
- [TITLE: "Custom Draw Cell", CLASS: "CustomDrawCell"],
- [TITLE: "Collection View", CLASS: "DemoCollectionView"]
- ]
- ] as NSDictionary
-*/
         let basic = MenuSection(section: "Basic", menus:[
-            Menu(title: "Plain Table", viewClass: "RawTableViewVC"),
-            Menu(title: "Raw Table", viewClass: "DemoRotate"),
-            Menu(title: "2 Tables in VC", viewClass: "TwoTableViewsInVC"),
+            Menu(title: "Plain Table", viewClass: "PlainTable"),
+            Menu(title: "Raw Table", viewClass: "RawTableViewVC"),
             Menu(title: "Group Table", viewClass: "GroupTable"),
+            Menu(title: "2 Tables in VC", viewClass: "TwoTableViewsInVC"),
             Menu(title: "Table + Photo", viewClass: "VictoriaSecret"),
             Menu(title: "Index Table", viewClass: "IndexTable"),
-            Menu(title: "Table StoryBoard", viewClass: "TableStoryBoard#Storyboard")
+            Menu(title: "Table StoryBoard", viewClass: "TableStoryBoard", storyBoard: "Storyboard", storyBoardID: "TableStoryBoard")
+            ])
+        let medium = MenuSection(section: "Intermediate", menus:[
+            Menu(title: "Accessory Table", viewClass: "AccessoryTable"),
+            Menu(title: "Setting Table", viewClass: "SettingTable"),
+            Menu(title: "Multi Seclection", viewClass: "MultiSelection"),
+            Menu(title: "Custom Cell", viewClass: "CustomCellDemo"),
+            Menu(title: "Search", viewClass: "SearchTable"),
+            Menu(title: "CRUD", viewClass: "StudentListVC")
             ])
         
-        /*let medium = [SECTION: "Intermediate",MENU:[
-            [TITLE: "Accessory Table",CLASS: "AccessoryTable"],
-            [TITLE: "Accessory Table Persistent",CLASS: "AccessoryTablePersistent"],
-            [TITLE: "Setting Table",CLASS: "SettingTable"],
-            [TITLE: "Multi Seclection",CLASS: "MultiSelection"],
-            [TITLE: "Custom Cell",CLASS: "CustomCellDemo"],
-            [TITLE: "Search",CLASS: "SearchTable"],
-            [TITLE: "CRUD",CLASS: "StudentListVC"]
-        ]*/
-        //let medium = MenuSection()
+        let advanced = MenuSection(section: "Avanced", menus:[
+            Menu(title: "Custom Draw Cell", viewClass: "CustomDrawCell"),
+            Menu(title: "RezingHeightCell", viewClass: "RezingHeightCell"),
+            Menu(title: "LazyLoading", viewClass: "LazyLoading"),
+            Menu(title: "CachingImage", viewClass: "CachingImage"),
+            Menu(title: "PullingToRefresh", viewClass: "PullingToRefresh")
+            ])
         
-
+        let collectionView = MenuSection(section: "UICollectionView", menus:[
+            Menu(title: "CustomLayout", viewClass: "UICollectionViewCustomLayout")
+            ])
         
         let mainScreen = MainScreen(style: UITableViewStyle.Grouped)
-        mainScreen.menu = [basic]
-        mainScreen.title = "Gesture Recognizer"
-        mainScreen.about = "Gesture Recognizer written by Cuong"
+        mainScreen.menu = [basic, medium, advanced, collectionView]
+        mainScreen.title = "UITableView"
+        mainScreen.about = "Techmaster"
         
         let nav = UINavigationController(rootViewController: mainScreen)
         
-        window.rootViewController = nav        
-      
-    }   
+        window.rootViewController = nav
+        
+    }
 }

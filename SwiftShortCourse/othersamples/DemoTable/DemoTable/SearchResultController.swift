@@ -2,24 +2,21 @@
 //  SearchResultController.swift
 //  DemoTable
 //
-//  Created by cuong minh on 11/18/14.
-//  Copyright (c) 2014 Techmaster. All rights reserved.
+//  Created by cuong minh on 11/18/16.
+//  Copyright (c) 2016 Techmaster. All rights reserved.
 //
 
 import UIKit
 
 class SearchResultController: AnimalVC {
     var searchText: String? //Lưu chuỗi cần tìm kiếm
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("id", forIndexPath: indexPath)
         
-        let cellID = "id"
-        var cell: UITableViewCell
-        if let dequeCell: AnyObject = tableView.dequeueReusableCellWithIdentifier(cellID) {
-            cell = dequeCell as! UITableViewCell
-        } else {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        }
         //Lấy ra từng phần tử của mảng kết quả trả về
         let animal = animals[indexPath.row]
         
@@ -30,9 +27,6 @@ class SearchResultController: AnimalVC {
             let range = (animal as NSString).rangeOfString(searchStr, options: NSStringCompareOptions.CaseInsensitiveSearch)
 
             attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: range)
-
-            /* Bug with NSBackgroundColorAttributeName
-            attributedText.addAttribute(NSBackgroundColorAttributeName, value: UIColor.yellowColor(), range:range) */
 
             cell.textLabel?.attributedText = attributedText
             

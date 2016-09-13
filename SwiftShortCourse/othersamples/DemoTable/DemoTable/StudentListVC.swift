@@ -2,8 +2,8 @@
 //  StudentListVC.swift
 //  DemoTable
 //
-//  Created by cuong minh on 11/18/14.
-//  Copyright (c) 2014 Techmaster. All rights reserved.
+//  Created by cuong minh on 11/18/16.
+//  Copyright (c) 2016 Techmaster. All rights reserved.
 //
 
 import UIKit
@@ -20,6 +20,7 @@ class StudentListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         super.loadView()
         view.backgroundColor = UIColor.whiteColor()
         tableView = UITableView(frame: CGRect.null, style: UITableViewStyle.Plain)
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "#")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,8 +33,7 @@ class StudentListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         let fixWidthSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
         fixWidthSpace.width = 30
         let addButton = UIBarButtonItem(image: UIImage(named: "add")!, target: self, action: #selector(StudentListVC.onAdd))
-        let saveButton = UIBarButtonItem(image: UIImage(named: "save")!, target: self, action: Selector("onSave"))
-        toolBar.items = [spacer, addButton, fixWidthSpace, saveButton, spacer]
+        toolBar.items = [spacer, addButton, fixWidthSpace]
         view.addSubview(toolBar)
         
         let views = ["view": view, "tableView": tableView, "toolBar": toolBar]
@@ -51,20 +51,17 @@ class StudentListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
        super.viewDidLoad()
        initData()
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
     //MARK: UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return students.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        var cell: UITableViewCell!
-        if let dequeCell = tableView.dequeueReusableCellWithIdentifier("#") as? UITableViewCell {
-            cell = dequeCell
-        } else {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "#")
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("#", forIndexPath: indexPath)
         let student = students[indexPath.row] as Student
         cell.textLabel?.text = student.fullName
         
@@ -77,8 +74,16 @@ class StudentListVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     func onAdd() {
         if addUpdateStudentVC == nil {
             addUpdateStudentVC = AddUpdateStudentVC()
+            addUpdateStudentVC.delegate = self
         }
         self.navigationController?.pushViewController(addUpdateStudentVC, animated: true)
     }
 
+}
+extension StudentListVC: StudentListVCDelegate
+{
+    func addStudent(student: Student)
+    {
+        self.students.append(student)
+    }
 }

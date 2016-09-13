@@ -2,14 +2,17 @@
 //  AddUpdateStudentVC.swift
 //  DemoTable
 //
-//  Created by cuong minh on 11/18/14.
-//  Copyright (c) 2014 Techmaster. All rights reserved.
+//  Created by cuong minh on 11/18/16.
+//  Copyright (c) 2016 Techmaster. All rights reserved.
 //
 
 import UIKit
-
+protocol StudentListVCDelegate
+{
+    func addStudent(student: Student)
+}
 class AddUpdateStudentVC: UIViewController, UITextFieldDelegate {
-
+    var delegate: StudentListVCDelegate!
     private var txtfullName: UITextField!
     private var sliderScore: UISlider!
     
@@ -49,7 +52,8 @@ class AddUpdateStudentVC: UIViewController, UITextFieldDelegate {
     }
   
     func onSave() {
-        _ = self.navigationController?.popViewControllerAnimated(true) as! StudentListVC
+        delegate.addStudent(Student(name: txtfullName.text!, score: Double(sliderScore.value), liked: true))
+        self.navigationController!.popViewControllerAnimated(true)
         
     }
 }

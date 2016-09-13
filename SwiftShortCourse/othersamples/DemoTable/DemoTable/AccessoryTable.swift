@@ -2,8 +2,8 @@
 //  AccessoryTable.swift
 //  DemoTable
 //
-//  Created by cuong minh on 11/6/14.
-//  Copyright (c) 2014 Techmaster. All rights reserved.
+//  Created by cuong minh on 11/6/16.
+//  Copyright (c) 2016 Techmaster. All rights reserved.
 //
 
 import UIKit
@@ -12,6 +12,7 @@ class AccessoryTable: UITableViewController {
     var data : NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
         //Copy đoạn code kiểm tra data.plist đã có ở thu mục document chưa
         //Nếu chưa có thì copy từ main bundle vào, rồi đọc ra.
         //http://stackoverflow.com/questions/25100262/save-data-to-plist-file-in-swift
@@ -37,13 +38,7 @@ class AccessoryTable: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell!
-        let cellID  = "#"
-        if let dequeCell = tableView.dequeueReusableCellWithIdentifier(cellID) as UITableViewCell! {
-            cell = dequeCell
-        } else  {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("id", forIndexPath: indexPath)
         let item: AnyObject = data[indexPath.row]
         cell.textLabel?.text = item["text"] as? String
      
@@ -53,7 +48,7 @@ class AccessoryTable: UITableViewController {
    
         
         //3. hứng tương tác đa chạm
-        accessoryView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onAccessoryTap:"))
+        accessoryView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onAccessoryTap(_:))))
 
         //4. gán vào UITableViewCell.accessoryView
         cell.accessoryView = accessoryView

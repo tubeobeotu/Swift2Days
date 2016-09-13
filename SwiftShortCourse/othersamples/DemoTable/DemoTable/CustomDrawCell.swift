@@ -16,6 +16,7 @@ class CustomDrawCell: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
     }
 
     func initData() {
@@ -43,13 +44,7 @@ class CustomDrawCell: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellID = "id"
-        var cell: UITableViewCell
-        if let dequeCell: AnyObject = tableView.dequeueReusableCellWithIdentifier(cellID) {
-            cell = dequeCell as! UITableViewCell
-        } else {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("id", forIndexPath: indexPath)
         let stock = data[indexPath.row] as! NSDictionary
         cell.textLabel?.text = stock[STOCK] as? String
         

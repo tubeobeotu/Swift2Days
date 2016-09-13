@@ -2,8 +2,8 @@
 //  DetailViewController.swift
 //  DemoTable
 //
-//  Created by cuong minh on 11/18/14.
-//  Copyright (c) 2014 Techmaster. All rights reserved.
+//  Created by cuong minh on 11/18/16.
+//  Copyright (c) 2016 Techmaster. All rights reserved.
 //
 
 import UIKit

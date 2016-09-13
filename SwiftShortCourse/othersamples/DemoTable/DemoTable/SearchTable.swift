@@ -2,18 +2,18 @@
 //  SearchTable.swift
 //  DemoTable
 //
-//  Created by cuong minh on 11/17/14.
-//  Copyright (c) 2014 Techmaster. All rights reserved.
+//  Created by cuong minh on 11/17/16.
+//  Copyright (c) 2016 Techmaster. All rights reserved.
 //
 
 import UIKit
 
 class SearchTable: AnimalVC, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
-
+    
     var searchBar: UISearchBar!
     var searchController: UISearchController!
     var searchResultsController: SearchResultController!
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,29 +32,24 @@ class SearchTable: AnimalVC, UISearchBarDelegate, UISearchControllerDelegate, UI
         searchController.searchBar.delegate = self
         //This is line is very important. Without it, app will hang !
         definesPresentationContext = true  //**** Critical
-
+        
     }
-
+    
     func initData() {
         animals = ["Bear", "Black Swan", "Buffalo", "Camel", "Cockatoo", "Dog", "Donkey", "Emu","Giraffe", "Greater Rhea","Hippopotamus", "Horse","Koala","Lion", "Llama", "Manatus", "Meerkat","Panda", "Peacock", "Pig", "Platypus", "Polar Bear","Rhinoceros", "Seagull", "Tasmania Devil","Whale", "Whale Shark", "Wombat"]
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-            let cellID = "id"
-            var cell: UITableViewCell
-            if let dequeCell: AnyObject = tableView.dequeueReusableCellWithIdentifier(cellID) {
-                cell = dequeCell as! UITableViewCell
-            } else {
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
-                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            }
-            let animal = animals[indexPath.row]
-            cell.textLabel?.text = animal
-            cell.imageView?.image = UIImage(named: getImageFileName(animal))
-            return cell
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("id", forIndexPath: indexPath)
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        
+        let animal = animals[indexPath.row]
+        cell.textLabel?.text = animal
+        cell.imageView?.image = UIImage(named: getImageFileName(animal))
+        return cell
     }
-  
+    
     // MARK: UISearchResultsUpdating
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         //Lấy ra tập các ký tự trắng, space
@@ -78,15 +73,15 @@ class SearchTable: AnimalVC, UISearchBarDelegate, UISearchControllerDelegate, UI
         resultsController.animals = searchResults
         
         //Làm tươi bảng kết quả
-        resultsController.tableView.reloadData()     
+        resultsController.tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-    //    if detailViewController == nil {
-            //Nếu detailViewController chưa được khởi tạo thì sẽ khởi tạo
-            detailViewController = DetailViewController()
-    //    }
+        //    if detailViewController == nil {
+        //Nếu detailViewController chưa được khởi tạo thì sẽ khởi tạo
+        detailViewController = DetailViewController()
+        //    }
         
         if tableView == self.tableView {
             detailViewController.animal = animals[indexPath.row]
@@ -97,5 +92,5 @@ class SearchTable: AnimalVC, UISearchBarDelegate, UISearchControllerDelegate, UI
         //tableView.deselectRowAtIndexPath(tableView.indexPathForSelectedRow()!, animated: false)
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
-
+    
 }
