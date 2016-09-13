@@ -9,7 +9,7 @@
 import UIKit
 
 class EqualWidth: UIViewController {
-
+    
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = UIColor.whiteColor()
@@ -44,5 +44,5 @@ class EqualWidth: UIViewController {
         //Vertical space between blue and orange is 10. Try [blueRect][orangeRect]
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[blueRect]-10-[orangeRect]", options: [], metrics: nil, views: blueOrange))
     }
-
+    
 }

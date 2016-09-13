@@ -37,7 +37,7 @@ class DemoMultipler: UIViewController {
         let blueOrange = ["blueRect": blueRect, "orangeRect": orangeRect]
         //CenterX orange
         self.view.addConstraint(NSLayoutConstraint(item: orangeRect, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0))
-       
+        
         //Make orange.height = blue.height * 2
         self.view.addConstraint(NSLayoutConstraint(item: orangeRect, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: blueRect, attribute: NSLayoutAttribute.Height, multiplier: 2, constant: 0))
         
