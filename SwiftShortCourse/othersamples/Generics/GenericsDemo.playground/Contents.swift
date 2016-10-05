@@ -4,41 +4,44 @@ import UIKit
 //Generic Functions
 /*
 //Đề bài hãy viết hàm cộng 2 số Int, Double và in ra đúng kiểu
-    func adderInt(_ x: Int, _ y: Int) -> Int
-    {
-        return x + y
-    }
-    func adderDouble(_ x: Double, _ y: Double) -> Double
-    {
-        return x + y
-    }
+func adderInt(_ x: Int, _ y: Int) -> Int
+{
+    return x + y
+}
+func adderDouble(_ x: Double, _ y: Double) -> Double
+{
+    return x + y
+}
 
 //Khi sử dụng generic thì không cần quan tâm đến kiểu viết 1 dùng cho tất cả
-    func adderGeneric<T: NumericType>(_ x: T, _ y: T) -> T
-    {
-        print(type(of: x))
-        return x + y
-    }
-    protocol NumericType {
-        static func +(lhs: Self, rhs: Self) -> Self
-    }
+func adderGeneric<T: NumericType>(_ x: T, _ y: T) -> T
+{
+    print(type(of: x))
+    return x + y
+}
+protocol NumericType {
+    static func +(lhs: Self, rhs: Self) -> Self
+}
 
-    extension Int: NumericType{}
-    extension Double: NumericType{}
-    print(adderGeneric(1, 2))
+extension Int: NumericType{}
+extension Double: NumericType{}
+print(adderGeneric(1, 2))
 */
 
-//Struct
+//Struct, Class
 /*
+
 struct Queue<Element>{
     fileprivate var elements = [Element]()
     init(array: [Element]) {
         self.elements = array
     }
+ //Thêm phần tử vào cuối
     mutating func enqueue(newElement: Element) {
         elements.append(newElement)
     }
-    
+
+ //Lấy ra phần tử ở đầu
     mutating func dequeue() -> Element? {
         guard !elements.isEmpty else {
             return nil
@@ -59,6 +62,7 @@ q.dequeue()
 
 //Extension
 /*
+//Bản chất vẫn là struct và queue nên có thể sử dụng extension
 extension Queue
 {
     func printAllValues()
@@ -92,6 +96,12 @@ struct Queue<Element>{
     }
     func findIndex<T: Equatable>(of valueToFind: T) -> Int? {
         for (index, value) in self.elements.enumerated() {
+            
+//            guard let elementValue = value as? T else{return nil}
+//            if valueToFind == elementValue
+//            {
+//                return index
+//            }
             if let elementValue = value as? T
             {
                 if valueToFind == elementValue
@@ -103,8 +113,11 @@ struct Queue<Element>{
         return nil
     }
 }
-var q = Queue(array: [])
 
+var qInit = Queue(array: [1, 2, "3"])
+qInit.findIndex(of: 1)
+
+var q = Queue(array: [])
 q.enqueue(newElement: 4)
 q.enqueue(newElement: 2)
 q.enqueue(newElement: "Nguyen Van Tu")
@@ -113,34 +126,48 @@ q.findIndex(of: "Nguyen Van Tu")
 
 //Associated Types
 /*
+protocol ContainerFirst {
+    associatedtype ItemType
+}
+func checkType<T: ContainerFirst>(x: T)
+{
+    print(T.ItemType.self)
+    print(type(of: x))
+}
+extension Int: ContainerFirst{
+    typealias ItemType = Int
+}
+checkType(x: 1)
+*/
+
+//Where Clauses
+/*
 protocol Container {
     associatedtype ItemType
     mutating func append(_ item: ItemType)
     var count: Int { get }
     subscript(i: Int) -> ItemType { get }
 }
-*/
 
-//Where Clauses
-/*
 func allItemsMatch<C1: Container, C2: Container>
     (_ someContainer: C1, _ anotherContainer: C2) -> Bool
     where C1.ItemType == C2.ItemType, C1.ItemType: Equatable {
-//         Check that both containers contain the same number of items.
-                    if someContainer.count != anotherContainer.count {
-                        return false
-                    }
-                    // Check each pair of items to see if they are equivalent.
-                    for i in 0..<someContainer.count {
-                        if someContainer[i] != anotherContainer[i] {
-                            return false
-                        }
-                    }
-//         All items match, so return true.
+        //Kiểm tra số phần tử bằng nhau
+        print("ok")
+        if someContainer.count != anotherContainer.count {
+            return false
+        }
+        //Kiếm tra mỗi cặp theo index có bằng nhau không
+        for i in 0..<someContainer.count {
+            if someContainer[i] != anotherContainer[i] {
+                return false
+            }
+        }
+        //Tất cả đúng thì return về true
         return true
 }
 extension Array: Container{}
 let a = [1, 2, 3, 4]
-let b = [1, 2, 3]
+let b = [1, 2, 3, 4]
 print(allItemsMatch(a, b))
 */
