@@ -202,6 +202,45 @@ print(allItemsMatch(a, b))
 //}
 //testClause(2, 2)
 
+class Employee
+{
+    var baseSalary:Double = 20
+    let timeWorks:Double = 20
+    func calculateSalary() -> Double
+    {
+        return baseSalary * timeWorks
+    }
+}
+class Boss: Employee
+{
+    override init() {
+        super.init()
+        baseSalary = 50
+    }
+}
+class Guard: Employee
+{
+    override init() {
+        super.init()
+        baseSalary = 25
+    }
+}
+func sort<T: Comparable>(values: inout [T])
+{
+    for i in 0 ..< values.count
+    {
+        for j in i+1 ..< values.count
+        {
+            if (values[i] > values[j])
+            {
+                let temp = values[i]
+                values[j] = values[i]
+                values[i] = temp
+            }
+        }
+    }
+}
 
-
+var arr = [1, 9, 8, 7, 6]
+print(sort(values: &arr))
 

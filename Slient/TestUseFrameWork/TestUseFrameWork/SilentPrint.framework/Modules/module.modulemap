@@ -1,0 +1,10 @@
+framework module SilentPrint {
+  umbrella header "SilentPrint.h"
+
+  export *
+  module * { export * }
+}
+
+module SilentPrint.Swift {
+    header "SilentPrint-Swift.h"
+}

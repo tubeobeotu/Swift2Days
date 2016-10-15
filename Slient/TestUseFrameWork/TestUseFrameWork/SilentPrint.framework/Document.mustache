@@ -1,0 +1,47 @@
+{{< Layout}}
+{{$ content }}
+<table height = {{width}} width={{height}}>
+<tr>
+<td style="text-align: center;" id = "logo">{{#logo}}<img src = {{logo}} height = "60" width="100">{{/logo}}</td>
+<td style="text-align: center;" id = "topDoctorText">{{topDoctorText}}</td>
+</tr>
+<tr>
+<td style="text-align: center;" rowspan="2" id = "greetingText">{{greetingText}}</td>
+
+<td style="text-align: center;" id = "doctorImage">{{#doctorImage}}<img src = {{doctorImage}} height = "60" width="100">{{/doctorImage}}</td>
+</tr>
+<tr>
+<td id = "bottomDoctorText">{{bottomDoctorText}}</td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="2" height = "50" id = "surgeryInfoText">{{surgeryInfoText}}</td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="2" height = "120" id = "continuedSugeryInfo">{{continuedSugeryInfo}}</td>
+</tr>
+<tr>
+<td id = "bottomText1">{{BottomText1}}</td>
+<td style="text-align: center;" id = "bottomText1">{{bottomText1}}</td>
+</tr>
+<tr>
+<td id = "bottomImageHeader1">{{#bottomImageHeader1}}<img src = {{bottomImageHeader1}} height = "20" width="100">{{/bottomImageHeader1}}</td>
+<td style="text-align: center;" id = "bottomImageHeader2">{{#bottomImageHeader2}}<img src = {{bottomImageHeader2}} height = "20" width="100">{{/bottomImageHeader2}}</td>
+</tr>
+<tr>
+<td id = "bottomImage#1">{{#bottomImage#1}}<img src = {{bottomImage#1}} height = "70" width="100">{{/bottomImage#1}}</td>
+<td style="text-align: center;" id = "bottomImage#2">{{#bottomImage#2}}<img src = {{bottomImage#2}} height = "80" width="100">{{/bottomImage#2}}</td>
+</tr>
+<tr>
+<td id = "bottomImageCaption1">{{#bottomImageCaption1}}<img src = {{bottomImageCaption1}} height = "20" width="100">{{/bottomImageCaption1}}</td>
+<td style="text-align: center;" id = "bottomImageCaption2">{{#bottomImageCaption2}}<img src = {{bottomImageCaption2}} height = "20" width="100">{{/bottomImageCaption2}}</td>
+</tr>
+</table>
+
+{{#images}}
+<div>
+<img src = {{imageName}} height = imageHeight width= imageWidth>
+</div>
+{{/images}}
+
+{{/ content }}
+{{/ Layout}}
