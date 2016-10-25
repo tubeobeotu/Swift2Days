@@ -10,6 +10,7 @@
 #import "ERHTMLtoPDF.h"
 #import "TFHpple.h"
 #import "TFHppleElement.h"
+#import <GRMustache/GRMustache.h>
 //! Project version number for SilentPrint.
 FOUNDATION_EXPORT double SilentPrintVersionNumber;
 

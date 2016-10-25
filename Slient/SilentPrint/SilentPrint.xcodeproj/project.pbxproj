@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB56747E1DB4741300B765DD /* GRMustache.framework in Headers */ = {isa = PBXBuildFile; fileRef = CBF3F7941DB2304900DFE928 /* GRMustache.framework */; settings = {ATTRIBUTES = (Public, ); }; };
 		CBF3F75E1DB2291600DFE928 /* SilentPrint.h in Headers */ = {isa = PBXBuildFile; fileRef = CBF3F75C1DB2291600DFE928 /* SilentPrint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CBF3F76A1DB2292B00DFE928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3F7651DB2292B00DFE928 /* AppDelegate.swift */; };
 		CBF3F76B1DB2292B00DFE928 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3F7661DB2292B00DFE928 /* Components.swift */; };
@@ -148,6 +149,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB56747E1DB4741300B765DD /* GRMustache.framework in Headers */,
 				CBF3F7CB1DB23C4800DFE928 /* Document.mustache in Headers */,
 				CBF3F7CC1DB23C4800DFE928 /* Layout.mustache in Headers */,
 				CBF3F7CD1DB23C4800DFE928 /* 5-3.png in Headers */,
@@ -437,6 +439,7 @@
 				CBF3F7631DB2291600DFE928 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
